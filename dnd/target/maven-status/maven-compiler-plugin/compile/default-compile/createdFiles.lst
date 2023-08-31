@@ -1,0 +1,9 @@
+fr/campus/dnd/characters/Wizard.class
+Board.class
+src/main/fr/campus/java/dnd/characters/wizard/Spell.class
+fr/campus/dnd/characters/Warrior.class
+fr/campus/dnd/Main.class
+fr/campus/dnd/Database/Database.class
+src/main/fr/campus/java/dnd/characters/warrior/Weapon.class
+fr/campus/dnd/characters/Hero.class
+fr/campus/dnd/menu/Menu.class
