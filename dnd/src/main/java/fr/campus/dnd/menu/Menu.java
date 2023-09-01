@@ -9,13 +9,17 @@ public class Menu {
     private String keyboardScan;
     private Hero avatar;
     private String hero;
-
+    /**
+     * Classe qui démarre le menu
+     */
     public Menu() {
         this.keyboardScan = null;
         this.avatar = null;
         this.hero = null;
     }
-
+    /**
+     * Méthode qui débute le jeu
+     */
     public void startGame() {
         System.out.println("Welcome to the Dungeons and Dragons adventure!\nShould we begin?");
         try {
@@ -43,7 +47,14 @@ public class Menu {
         } while (!(keyboardScan.equals("Q")));
     }
 
+    /**
+     * Méthode qui choisi le personnage ou quitte le jeu
+     * @throws DatabaseException si le hero n'est pas choisi
+     */
     public void showMenu1() throws DatabaseException {
+        /**
+         * @throws DatabaseException si le hero n'est pas choisi
+         */
         System.out.println("Menu:\nChoose character(C)\nQuit(Q)");
         keyboardScan = scanKeyboard();
         switch (keyboardScan) {
@@ -61,13 +72,20 @@ public class Menu {
         }
     }
 
+    /**
+     * Méthode qui affiche le deuxième menu, avec le choix de montrer l'info du personnage, modifier le personnage, jouer ou qitter le jeu
+     */
     public void showMenu2() {
+
         do {
             System.out.println("Menu:\nShow character information(I)\nModify your character(M)\nPlay(P)\nQuit(Q)");
             keyboardScan = scanKeyboard();
         } while (!(keyboardScan.equals("I") || keyboardScan.equals("M") || keyboardScan.equals("P") || keyboardScan.equals("Q")));
     }
 
+    /**
+     Méthode qui crée une variable pour stocker et renvoier la valeur insérée par le jouer
+     */
     public String scanKeyboard() {
         String optionChosen;
         Scanner keyboard = new Scanner(System.in);
@@ -75,6 +93,10 @@ public class Menu {
         return optionChosen;
     }
 
+    /**
+     Méthode qui crée une liste d'heros à travers la base des données
+     * @throws DatabaseException si les personnages de la base des données ne sont pas affichés correctement
+     */
     public String chooseHero() throws DatabaseException {
         String heroChosen;
         do {
@@ -110,6 +132,9 @@ public class Menu {
         return hero;
     }
 
+    /**
+     Méthode qui crée un hero guerrier ou wizard à partir de l'insertion manuel du joueur
+     */
     public void createHero(String hero) {
         System.out.println("How do you want to call your " + hero + "?");
         keyboardScan = scanKeyboard();
@@ -137,10 +162,16 @@ public class Menu {
         System.out.println("Welcome to life, " + avatar.getName() + "! Are you ready to start?\nLet's go!");
     }
 
+    /**
+     Méthode incomplet qui défini les points de vie (?)
+     */
     public void defineLevel(String points, int min, int max) {
         System.out.println("Choose your " + points + " points (" + min + "-" + max + "):");
     }
 
+    /**
+     Méthode pour quitter le jeu ou recommencer du début
+     */
     public void toQuit() {
         System.out.println("Are you sure you want to quit (Y/N)?");
         Scanner keyboard2 = new Scanner(System.in);
@@ -157,10 +188,16 @@ public class Menu {
         }
     }
 
+    /**
+     Méthode qui montre les info du personnage crée
+     */
     public void showInfo() {
         System.out.println("This is you:\n" + avatar);
     }
 
+    /**
+     Méthode qui permet de modifier le personnage en dur
+     */
     public void modifyHero() {
         do {
             System.out.println("What do you want to change?\n" + avatar + "\nName(N)\nLife Points(L)\nAttack points(A)\nBack to menu(B)");
