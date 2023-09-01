@@ -18,7 +18,7 @@ public class DatabaseTest {
     public void shouldConnectDatabase() {
         try {
             Connection c = Database.getConnection();
-            assertTrue("connection must exits", c != null);
+            assertTrue("connection must exist", c != null);
         } catch (Exception e) {
             assertTrue("connection must be loaded", false);
         }

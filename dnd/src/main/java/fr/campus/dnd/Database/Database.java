@@ -3,6 +3,8 @@ package fr.campus.dnd.Database;
 import fr.campus.dnd.characters.Hero;
 import fr.campus.dnd.characters.Warrior;
 import fr.campus.dnd.characters.Wizard;
+import fr.campus.dnd.exceptions.DatabaseException;
+import fr.campus.dnd.exceptions.PropertiesException;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -14,23 +16,32 @@ import java.sql.*;
 public class Database {
     private static Connection connection; //objet pour se connecter a la base de données
 
-    public static Connection getConnection() throws DatabaseException {
+    public static Connection getConnection() throws DatabaseException, PropertiesException {
         if (connection == null) {
+            String url;
+            String username;
+            String password;
             try {
                 InputStream in = new FileInputStream(".env");
                 Properties prop = new Properties();
                 prop.load(in);
-
+                url = prop.getProperty("database.url");
+                username = prop.getProperty("database.username");
+                password = prop.getProperty("database.password");
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                connection = DriverManager.getConnection("jdbc:mysql://localhost/Heroes", prop.getProperty("database.username"), prop.getProperty("database.password"));
             } catch (Exception e) {
-                throw new DatabaseException(e.getMessage());
+                throw new PropertiesException("Ops, something went wrong with the login connexion");
+            }
+            try {
+                connection = DriverManager.getConnection(url, username, password);
+            }
+            catch (Exception e) {
+                System.out.println("Error");
             }
         }
         return connection;
     }
 
-    //etape 2. connexion à la base:
     public static List<Hero> getHero() throws DatabaseException {
         List<Hero> heroes = new ArrayList<Hero>(); //initialisation de la liste des hero
 
@@ -59,8 +70,10 @@ public class Database {
                 heroes.add(hero);
             }
         } catch (Exception e) {
+            System.out.println("Ops, something went wrong.");
             throw new DatabaseException(e.getMessage());
         }
+        System.out.println("End here");
 
         return heroes;
     }

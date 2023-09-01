@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="fr.campus.dnd.DatabaseTest" time="0.2" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="fr.campus.dnd.DatabaseTest" time="0.203" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="FR"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/silva/Documents/MAVEN/dnd/target/surefire/surefirebooter15911588414472889208.jar /home/silva/Documents/MAVEN/dnd/target/surefire 2023-08-31T15-55-13_911-jvmRun1 surefire11989142205965253422tmp surefire_0885035393211462500tmp"/>
+    <property name="sun.java.command" value="/home/silva/Documents/MAVEN/dnd/target/surefire/surefirebooter11119110308866469820.jar /home/silva/Documents/MAVEN/dnd/target/surefire 2023-09-01T14-23-58_581-jvmRun1 surefire18198697848533734705tmp surefire_0542575463910640590tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/silva/Documents/MAVEN/dnd/target/test-classes:/home/silva/Documents/MAVEN/dnd/target/classes:/home/silva/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/silva/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/silva/.m2/repository/com/mysql/mysql-connector-j/8.1.0/mysql-connector-j-8.1.0.jar:/home/silva/.m2/repository/com/google/protobuf/protobuf-java/3.21.9/protobuf-java-3.21.9.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/home/silva/Documents/MAVEN/dnd/target/surefire/surefirebooter15911588414472889208.jar"/>
+    <property name="surefire.real.class.path" value="/home/silva/Documents/MAVEN/dnd/target/surefire/surefirebooter11119110308866469820.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.8.1+1-Ubuntu-0ubuntu122.04"/>
     <property name="user.name" value="silva"/>
@@ -51,6 +51,6 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="shouldGetHeroes" classname="fr.campus.dnd.DatabaseTest" time="0.199"/>
-  <testcase name="shouldConnectDatabase" classname="fr.campus.dnd.DatabaseTest" time="0.001"/>
+  <testcase name="shouldGetHeroes" classname="fr.campus.dnd.DatabaseTest" time="0.203"/>
+  <testcase name="shouldConnectDatabase" classname="fr.campus.dnd.DatabaseTest" time="0"/>
 </testsuite>

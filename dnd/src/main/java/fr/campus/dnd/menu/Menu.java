@@ -1,13 +1,9 @@
 package fr.campus.dnd.menu;
 import fr.campus.dnd.Database.Database;
+import fr.campus.dnd.exceptions.DatabaseException;
 import fr.campus.dnd.characters.Hero;
-import fr.campus.dnd.characters.Wizard;
 
-import java.io.InputStream;
-import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 import java.util.Scanner;
 public class Menu {
     private String keyboardScan;
@@ -22,7 +18,12 @@ public class Menu {
 
     public void startGame() {
         System.out.println("Welcome to the Dungeons and Dragons adventure!\nShould we begin?");
-        this.showMenu1();
+        try {
+            this.showMenu1();
+        }
+        catch (Exception e) {
+            System.out.println("Error");
+        }
         do {
             this.showMenu2();
             switch (keyboardScan) {
@@ -42,13 +43,18 @@ public class Menu {
         } while (!(keyboardScan.equals("Q")));
     }
 
-    public void showMenu1() {
+    public void showMenu1() throws DatabaseException {
         System.out.println("Menu:\nChoose character(C)\nQuit(Q)");
         keyboardScan = scanKeyboard();
         switch (keyboardScan) {
             case "C" -> {
-                hero = this.chooseHero();
-            }
+                try {
+                    hero = this.chooseHero();
+                }
+                catch (Exception e) {
+                    throw new DatabaseException("You need to choose a hero");
+                }
+                }
             case "Q" -> {
                 this.toQuit();
             }
@@ -69,14 +75,19 @@ public class Menu {
         return optionChosen;
     }
 
-    public String chooseHero() {
+    public String chooseHero() throws DatabaseException {
         String heroChosen;
         do {
             System.out.println("Ok! Let's choose your character:");
-            List<Hero> hero = Database.getHero();
-            for (int i = 0; i < hero.size(); i++) {
-                System.out.println(hero.get(i));
+            try {
+                List<Hero> hero = Database.getHero();
+                for (int i = 0; i < hero.size(); i++) {
+                    System.out.println(hero.get(i));
+                }
+            } catch (Exception e) {
+                throw new DatabaseException("Oh, something went wrong");
             }
+
             System.out.println("Choose an option: She-Ra(WR), Hermione(WZ) or Quit(Q)");
             Scanner keyboard = new Scanner(System.in);
             heroChosen = keyboard.nextLine().toUpperCase();
